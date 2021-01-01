@@ -1,0 +1,11 @@
+{
+  "name": "risk",
+  "version": "1.0.0",
+  "description": "Risk analysis component",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "caio.abe@estilo7.com.br",
+  "license": "ISC"
+}
