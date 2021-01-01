@@ -1,15 +1,16 @@
+import bodyParser from 'body-parser';
 import express from 'express';
 
+import { router } from './router';
+
 const app = express();
-const port = 8080; // default port to listen
+const port = 8080;
 
-app.post('/profile', (_, res) => {
-  const dummyData = {};
+app.use(bodyParser.json());
 
-  res.send(dummyData);
-});
+app.use(router);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server started at http://localhost:${port}`);
+  console.info(`Server started at http://localhost:${port}`);
 });
