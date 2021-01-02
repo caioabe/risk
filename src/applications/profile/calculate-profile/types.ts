@@ -18,7 +18,9 @@ export interface House {
   ownershipStatus: OwnershipStatusType;
 }
 
-export type RiskQuestions = [boolean, boolean, boolean];
+export type BinaryScore = 0 | 1;
+
+export type RiskQuestions = BinaryScore[];
 
 export interface Vehicle {
   year: number;
@@ -42,7 +44,7 @@ export interface RequestBody {
   } | null;
   income: number;
   maritalStatus: string;
-  riskQuestions: [number, number, number];
+  riskQuestions: number[];
   vehicle: {
     year: number;
   } | null;
