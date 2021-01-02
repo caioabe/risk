@@ -1,3 +1,3 @@
 export interface Logger {
-  publish: (message: string) => void;
+  log: (message: string) => void;
 }
