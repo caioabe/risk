@@ -4,7 +4,7 @@ Whilst the first feature remains under development, I decided to use this README
 
 - [x] Bootstrap backbone (working rest framework + tests + compiling + lint)
 - [x] Create basic structure (defining tactical patterns boundaries)
-- [ ] Command validation
+- [x] Command validation
 - [ ] Profile Domain
 
   - [ ] Calculate Base Score (reduce summing Truthy values)

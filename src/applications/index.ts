@@ -1,1 +1,1 @@
-export * from './profile';
+export * from './profile/calculate-profile';
