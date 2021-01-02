@@ -65,7 +65,7 @@ describe('command', () => {
       it('returns throws an error describing each validation error', () => {
         const body = {} as RequestBody;
 
-        const expectedErrorMessage = `Calculate Profile Command errors:
+        const expectedErrorMessage = `Calculate Risk Score Command errors:
 Invalid age undefined. Required a positive integer.
 Invalid dependents undefined. Required a positive integer.
 Invalid house undefined. Required a valid ownershipStatus owned,mortgaged.

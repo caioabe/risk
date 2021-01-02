@@ -1,1 +1,1 @@
-export * from './profile/calculate-profile';
+export * from './risk/calculate-risk-score';

@@ -1,4 +1,7 @@
-import { ALL_MARITAL_STATUSES, ALL_OWNERSHIP_STATUSES } from '../types';
+import {
+  ALL_MARITAL_STATUSES,
+  ALL_OWNERSHIP_STATUSES,
+} from '../../../../domain/risk';
 import {
   isHouse,
   isVehicle,

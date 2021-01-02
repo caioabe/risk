@@ -1,15 +1,14 @@
+import {
+  ALL_MARITAL_STATUSES,
+  ALL_OWNERSHIP_STATUSES,
+  House,
+  MaritalStatusType,
+  RiskQuestions,
+  Vehicle,
+} from '../../../domain/risk';
 import { isNumber } from '../../../lib';
 import { checkValid } from '../../command-helpers';
-import {
-  ALL_OWNERSHIP_STATUSES,
-  ALL_MARITAL_STATUSES,
-  House,
-  Vehicle,
-  MaritalStatus,
-  RiskQuestions,
-  CalculateProfileCommand,
-  RequestBody,
-} from './types';
+import { CalculateRiskScoreCommand, RequestBody } from './types';
 
 import {
   isHouse,
@@ -51,7 +50,7 @@ const validateVehicle = (vehicle: unknown) => () => {
 };
 
 const validateMaritalStatus = (maritalStatus: unknown) => () =>
-  checkValid(isMaritalStatus)<MaritalStatus>({
+  checkValid(isMaritalStatus)<MaritalStatusType>({
     candidate: maritalStatus,
     errorMessage: `Invalid marital status ${JSON.stringify(
       maritalStatus,
@@ -74,7 +73,7 @@ export const buildCommand = ({
   maritalStatus,
   riskQuestions,
   vehicle,
-}: RequestBody): CalculateProfileCommand => {
+}: RequestBody): CalculateRiskScoreCommand => {
   const validations = [
     validatePositiveNumber('age', age),
     validatePositiveNumber('dependents', dependents),
@@ -97,7 +96,7 @@ export const buildCommand = ({
 
   if (errors.length > 0) {
     const mergedErrors = errors.reduce((acc, cur) => `${acc}\n${cur}`, '');
-    const errorMessage = `Calculate Profile Command errors:${mergedErrors}`;
+    const errorMessage = `Calculate Risk Score Command errors:${mergedErrors}`;
 
     throw Error(errorMessage);
   }
@@ -107,7 +106,7 @@ export const buildCommand = ({
     dependents,
     house: house as House,
     income,
-    maritalStatus: maritalStatus as MaritalStatus,
+    maritalStatus: maritalStatus as MaritalStatusType,
     riskQuestions: riskQuestions as RiskQuestions,
     vehicle,
   };

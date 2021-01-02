@@ -1,8 +1,8 @@
 import Router from 'express';
-import { profileController } from '../controllers';
+import { riskController } from '../controllers';
 
 const router = Router();
 
-router.get('/profile', profileController.calculateProfile());
+router.post('/risk/calculate-score', riskController.calculateRiskScore());
 
 export { router };

@@ -1,13 +1,13 @@
-import { isArray, isZeroOrOne } from '../../../lib';
-import { resembles } from '../../command-helpers/resembles';
 import {
   ALL_MARITAL_STATUSES,
   ALL_OWNERSHIP_STATUSES,
   House,
-  MaritalStatus,
+  MaritalStatusType,
   RiskQuestions,
   Vehicle,
-} from './types';
+} from '../../../domain/risk';
+import { isArray, isZeroOrOne } from '../../../lib';
+import { resembles } from '../../command-helpers/resembles';
 
 export const isHouse = (candidate: unknown): candidate is House => {
   if (resembles<House>(candidate)) {
@@ -36,7 +36,7 @@ export const isVehicle = (candidate: unknown): candidate is Vehicle => {
 
 export const isMaritalStatus = (
   maritalStatus: unknown,
-): maritalStatus is MaritalStatus =>
+): maritalStatus is MaritalStatusType =>
   typeof maritalStatus === 'string' &&
   ALL_MARITAL_STATUSES.map((x) => x.toString()).includes(maritalStatus);
 
