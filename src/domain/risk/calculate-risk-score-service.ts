@@ -1,9 +1,26 @@
-import { CalculateRiskScoreService } from './types';
+import {
+  CalculateRiskScoreService,
+  RiskQuestions,
+  RiskScoreStrategy,
+} from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const calculateRiskScoreService: CalculateRiskScoreService = (dto) => ({
-  auto: 'ineligible' as const,
-  disability: 'ineligible' as const,
-  home: 'ineligible' as const,
-  life: 'ineligible' as const,
-});
+const calculateBaseScoreFromRiskQuestions = (
+  riskQuestions: RiskQuestions,
+): number => riskQuestions.filter((answer) => answer === 1).length;
+
+const autoStrategy: RiskScoreStrategy = () => 'ineligible';
+const disabilityStrategy: RiskScoreStrategy = () => 'ineligible';
+const homeStrategy: RiskScoreStrategy = () => 'ineligible';
+const lifeStrategy: RiskScoreStrategy = () => 'ineligible';
+
+export const calculateRiskScoreService: CalculateRiskScoreService = (dto) => {
+  const { riskQuestions } = dto;
+  const baseScore = calculateBaseScoreFromRiskQuestions(riskQuestions);
+
+  return {
+    auto: autoStrategy(baseScore, dto),
+    disability: disabilityStrategy(baseScore, dto),
+    home: homeStrategy(baseScore, dto),
+    life: lifeStrategy(baseScore, dto),
+  };
+};

@@ -45,3 +45,8 @@ export interface CalculateRiskScoreDto {
 export type CalculateRiskScoreService = (
   dto: CalculateRiskScoreDto,
 ) => RiskScoreVO;
+
+export type RiskScoreStrategy = (
+  baseScore: number,
+  dto: CalculateRiskScoreDto,
+) => ProfileType;

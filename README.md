@@ -5,7 +5,7 @@ Whilst the first feature remains under development, I decided to use this README
 - [x] Bootstrap backbone (working rest framework + tests + compiling + lint)
 - [x] Create basic structure (defining tactical patterns boundaries)
 - [x] Command validation
-- [ ] Risk Domain
+- [x] Risk Domain
 
   - [ ] Calculate Base Score (reduce summing Truthy values)
   - [ ] Calculate Risk Score:
