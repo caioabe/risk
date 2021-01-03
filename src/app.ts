@@ -1,14 +1,11 @@
-import bodyParser from 'body-parser';
-import express from 'express';
+import express, { Application } from 'express';
+import { routes } from './routes';
 
-import { router } from './router';
-
-const app = express();
 const port = 8080;
 
-app.use(bodyParser.json());
+export const app: Application = express();
 
-app.use(router);
+routes(app);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

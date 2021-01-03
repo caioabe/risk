@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { Logger } from './types';
 
 export const logger: Logger = {
-  // eslint-disable-next-line no-console
-  log: (message: string): void => console.error(message),
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  log: (message: string | object): void => console.info(message),
 };
