@@ -8,6 +8,8 @@ import { dependentsExistencePolicy } from './dependents-existence-policy';
 import { maritalStatusPolicy } from './marital-status-policy';
 import { vehicleYearPolicy } from './vehicle-year-policy';
 
+// This could be configurable or even used in
+// conjuction with some feature flag integration
 export const activePolicies = [
   agePolicy,
   incomeNonExistencePolicy,

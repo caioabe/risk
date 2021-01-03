@@ -17,6 +17,7 @@ import { deduct, revokeEligibility } from '../compute-policies-engine/reducers';
 // in the future, optimized for faster changing requirements
 
 const POLICY_VISITORS: PolicyVisitors = {
+  // Unfortunatelly there's no such thing as pattern matching in TS
   auto: (state, payload) => {
     const { age } = payload;
     if (age < 30) return deduct(state, 2);

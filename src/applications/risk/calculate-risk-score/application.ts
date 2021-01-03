@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { CalculateRiskScoreApplication } from './types';
 import { logger as defaultLogger } from '../../../infra';
 import {
@@ -39,6 +40,7 @@ const calculateRiskScoreApplication: CalculateRiskScoreApplication = ({
 
     // I'd not log those, but I'll use them to explain the flow
     // more easily for this non-production version
+
     console.log(
       '######################## BEGIN OF SCRIPT ########################\n\n',
     );

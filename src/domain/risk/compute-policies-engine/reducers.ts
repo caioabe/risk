@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { InsuranceScoreStateSlice } from '../types';
 
 // This can be extracted in the future for memoizing or caching
@@ -6,6 +7,9 @@ import { InsuranceScoreStateSlice } from '../types';
 // based on new requirements, but does encourage manipulating
 // state only via these specialized reducers
 
+// Ps. It's important to enforce immutability here
+// using { ...stateSlice } to avoid unintended side
+// effects by altering state everywhere
 export const revokeEligibility = (
   stateSlice: InsuranceScoreStateSlice,
 ): InsuranceScoreStateSlice => {
