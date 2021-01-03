@@ -1,4 +1,22 @@
+# Risk
+
+- This component focuses on risk score calculation
+- The domain risk is concerned about tackling problems related to insurance risk analysis
+- Before expanding the domain concerns, ping #my-team to discuss about our microservices strategies and CCP compliance
+
+# Main ADRs
+
+- I've put some comments on top of the most important functions
+- Except for monitoringServices and loggers, all `console.log's` where intentionally written for demonstration purposes
+
+@caioabe
+
 # Setup and Run
+
+```bash
+# node version 15
+npm install -g yarn
+```
 
 ```bash
 yarn && yarn start
@@ -20,7 +38,7 @@ Whilst the first feature remains under development, I decided to use this README
 - [x] Bootstrap backbone (working rest framework + tests + compiling + lint)
 - [x] Create basic structure (defining tactical patterns boundaries)
 - [x] Command validation
-- [-] Risk Domain
+- [ ] Risk Domain
 
   - [x] Risk Questions Computation
 
@@ -60,6 +78,8 @@ Whilst the first feature remains under development, I decided to use this README
   - [x] MariageStatusPolicy
     - [x] `married / +1 life`
     - [x] `married / -1 disability`
+  - [ ] VehicleAgePolicy (use moment js)
+    - [ ] `(now - year) < 5 / +1 auto`
 
 - [ ] API test
-- [ ] Readme
+- [x] Readme
