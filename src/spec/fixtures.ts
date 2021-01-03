@@ -19,7 +19,7 @@ export const issuedApplicationStubFactory = ({
   dependents = 0,
   houseOwnershipStatus = null,
   income = 0,
-  maritalStatus = 'single' as const,
+  maritalStatus = 'married' as const,
   vehicleYear = null,
   baseScore = 0,
 } = {}): IssuedApplication => ({

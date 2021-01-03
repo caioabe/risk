@@ -1,3 +1,18 @@
+# Setup and Run
+
+```bash
+yarn && yarn start
+```
+
+# Testing
+
+```bash
+# curl example to 8080
+curl -X POST -d '{ "age": 35, "dependents": 0, "house": {  "ownershipStatus": "owned" }, "income": 0, "maritalStatus": "married", "riskQuestions": [0,0,0], "vehicle": {  "year": 2019 } }' http://localhost:8080/risk/calculate-score -H 'Content-Type: application/json'
+# expected response:
+# {"auto":"economic", "home":"economic", "life":"economic", "disability":"ineligible"}
+```
+
 // TODO
 
 Whilst the first feature remains under development, I decided to use this README.md as a todo list
@@ -25,28 +40,26 @@ Whilst the first feature remains under development, I decided to use this README
   - [x] Map scores to human readable output
   - [x] Create engine for configurable chain of policies computation
 
-  - [ ] IncomeNonExistencePolicy
-    - [ ] `INELIGIBLE disability`
-  - [ ] VehicleNonExistencePolicy
-    - [ ] `INELIGIBLE auto`
-  - [ ] HouseNonExistencePolicy
-    - [ ] `INELIGIBLE home`
-  - [ ] IncomeAmountPolicy
-    - [ ] `> 200_000 / -1 auto`
-    - [ ] `> 200_000 / -1 home`
-    - [ ] `> 200_000 / -1 disability`
-    - [ ] `> 200_000 / -1 life`
-  - [ ] HouseOwnershipPolicy
-    - [ ] `mortgaged / +1 home`
-    - [ ] `mortgaged / +1 disability`
-  - [ ] DependentsExistencePolicy
-    - [ ] `+1 disability`
-    - [ ] `+1 life`
-  - [ ] MariageStatusPolicy
-    - [ ] `married / +1 life`
-    - [ ] `married / -1 disability`
-  - [ ] VehicleAgePolicy
-    - [ ] `(now - year) < 5 / +1 auto`
+  - [x] IncomeNonExistencePolicy
+    - [x] `INELIGIBLE disability`
+  - [x] VehicleNonExistencePolicy
+    - [x] `INELIGIBLE auto`
+  - [x] HouseNonExistencePolicy
+    - [x] `INELIGIBLE home`
+  - [x] IncomeAmountPolicy
+    - [x] `> 200_000 / -1 auto`
+    - [x] `> 200_000 / -1 home`
+    - [x] `> 200_000 / -1 disability`
+    - [x] `> 200_000 / -1 life`
+  - [x] HouseOwnershipPolicy
+    - [x] `mortgaged / +1 home`
+    - [x] `mortgaged / +1 disability`
+  - [x] DependentsExistencePolicy
+    - [x] `+1 disability`
+    - [x] `+1 life`
+  - [x] MariageStatusPolicy
+    - [x] `married / +1 life`
+    - [x] `married / -1 disability`
 
 - [ ] API test
 - [ ] Readme
