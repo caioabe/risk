@@ -18,9 +18,11 @@ export const revokeEligibility = (
 
 export const add = (
   stateSlice: InsuranceScoreStateSlice,
-  amount: number,
+  amount: Maybe<number>,
 ): InsuranceScoreStateSlice => {
   console.log('➕ adding', amount);
+
+  if (!amount) return stateSlice;
 
   return {
     ...stateSlice,
@@ -30,9 +32,11 @@ export const add = (
 
 export const deduct = (
   stateSlice: InsuranceScoreStateSlice,
-  amount: number,
+  amount: Maybe<number>,
 ): InsuranceScoreStateSlice => {
   console.log('➖ deducting', amount);
+
+  if (!amount) return stateSlice;
 
   return {
     ...stateSlice,
