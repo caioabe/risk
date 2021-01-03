@@ -5,6 +5,7 @@
 - Before expanding the domain concerns, ping #my-team to discuss about our microservices strategies and CCP compliance
 
 # Main ADRs and Debugging
+![Architecture Decision Record](https://github.com/caioabe/risk/blob/main/adr.jpg?raw=true)
 
 - I chose Typescript for the solution due to my fluency in JS and the desire to enjoy learning more abore TS :)
 - I'd really like to code this in Python to be more compliant with Origin's stack but I have to be honest in admitting that it would be impractical the assignment's due date added to all the things I'd like to exercise here
