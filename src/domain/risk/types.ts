@@ -1,8 +1,10 @@
-export const ALL_OWNERSHIP_STATUSES = ['owned', 'mortgaged'] as const;
-export type OwnershipStatusType = typeof ALL_OWNERSHIP_STATUSES[number];
-
-export const ALL_MARITAL_STATUSES = ['married', 'single'] as const;
-export type MaritalStatusType = typeof ALL_MARITAL_STATUSES[number];
+import { Logger } from '../../infra';
+import {
+  ALL_INSURANCES,
+  MaritalStatusType,
+  OwnershipStatusType,
+  ProfileType,
+} from './enums';
 
 export interface House {
   ownershipStatus: OwnershipStatusType;
@@ -15,21 +17,8 @@ export type RiskQuestions = BinaryScore[];
 export interface Vehicle {
   year: number;
 }
-
-export const ALL_PROFILES = [
-  'ineligible',
-  'economic',
-  'regular',
-  'responsible',
-] as const;
-
-export type ProfileType = typeof ALL_PROFILES[number];
-
 export interface RiskScoreVO {
-  auto: ProfileType;
-  disability: ProfileType;
-  home: ProfileType;
-  life: ProfileType;
+  [key: string]: ProfileType;
 }
 
 export interface CalculateRiskScoreDto {
@@ -42,11 +31,63 @@ export interface CalculateRiskScoreDto {
   vehicleYear: Maybe<number>;
 }
 
-export type CalculateRiskScoreService = (
-  dto: CalculateRiskScoreDto,
-) => RiskScoreVO;
+export interface InsuranceScoreStateSlice {
+  score: number;
+  isEligible: boolean;
+}
 
-export type RiskScoreStrategy = (
-  baseScore: number,
-  dto: CalculateRiskScoreDto,
-) => ProfileType;
+export interface InsurancesScoreState {
+  [key: string]: InsuranceScoreStateSlice;
+}
+
+export type IssuedApplication = Pick<
+  CalculateRiskScoreDto,
+  | 'age'
+  | 'dependents'
+  | 'houseOwnershipStatus'
+  | 'income'
+  | 'maritalStatus'
+  | 'vehicleYear'
+> & {
+  baseScore: number;
+};
+
+export type ApplyPoliciesInSequentialChain = (
+  issuedApplication: IssuedApplication,
+  states: InsurancesScoreState,
+) => InsurancesScoreState;
+
+export type RiskScorePolicy = {
+  name: string;
+  compute: ApplyPoliciesInSequentialChain;
+};
+
+export type RiskScorePolicies = RiskScorePolicy[];
+
+export type CalculateRiskScoreService = ({
+  dto,
+  policies,
+  insurances,
+  logger,
+}: {
+  dto: CalculateRiskScoreDto;
+  policies: RiskScorePolicies;
+  insurances: typeof ALL_INSURANCES;
+  logger: Logger;
+}) => RiskScoreVO;
+
+export interface ComputeBaseScoreDto {
+  riskQuestions: RiskQuestions;
+}
+
+export type ComputeBaseScoreService = ({
+  riskQuestions,
+}: ComputeBaseScoreDto) => number;
+
+export type PolicyVisitor = (
+  state: InsuranceScoreStateSlice,
+  issuedApplication: IssuedApplication,
+) => InsuranceScoreStateSlice;
+export interface PolicyVisitors {
+  [key: string]: PolicyVisitor;
+}

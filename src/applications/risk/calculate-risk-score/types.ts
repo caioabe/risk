@@ -2,6 +2,7 @@ import {
   CalculateRiskScoreService,
   House,
   MaritalStatusType,
+  PoliciesRunner,
   RiskQuestions,
   RiskScoreVO,
   Vehicle,
@@ -35,7 +36,7 @@ export interface RequestBody {
 export type CalculateRiskScoreApplication = ({
   calculateRiskScoreService,
   logger,
-}: {
+}?: {
   calculateRiskScoreService: CalculateRiskScoreService;
   logger: Logger;
 }) => (command: CalculateRiskScoreCommand) => RiskScoreVO;

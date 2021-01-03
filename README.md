@@ -5,21 +5,48 @@ Whilst the first feature remains under development, I decided to use this README
 - [x] Bootstrap backbone (working rest framework + tests + compiling + lint)
 - [x] Create basic structure (defining tactical patterns boundaries)
 - [x] Command validation
-- [x] Risk Domain
+- [-] Risk Domain
 
-  - [ ] Calculate Base Score (reduce summing Truthy values)
-  - [ ] Calculate Risk Score:
+  - [x] Risk Questions Computation
 
-    - [ ] If the user doesn’t have income, vehicles or houses, she is ineligible for disability, auto, and home insurance, respectively.
-    - [ ] If the user is over 60 years old, she is ineligible for disability and life insurance.
-    - [ ] If the user is under 30 years old, deduct 2 risk points from all lines of insurance. If she is between 30 and 40 years old, deduct 1.
-    - [ ] If her income is above $200k, deduct 1 risk point from all lines of insurance.
-    - [ ] If the user's house is mortgaged, add 1 risk point to her home score and add 1 risk point to her disability score.
-    - [ ] If the user has dependents, add 1 risk point to both the disability and life scores.
-    - [ ] If the user is married, add 1 risk point to the life score and remove 1 risk point from disability.
-    - [ ] If the user's vehicle was produced in the last 5 years, add 1 risk point to that vehicle’s score.
+    - [x] Reduce positive answers
 
-  - [ ] Map scores to human readable output
+  - [x] AgePolicy
+    - [x] `> 60 / INELIGIBLE disability`
+    - [x] `> 60 / INELIGIBLE life`
+    - [x] `< 30 / -2 auto`
+    - [x] `< 30 / -2 home`
+    - [x] `< 30 / -2 disability`
+    - [x] `< 30 / -2 life`
+    - [x] `>= 30 && <= 40 / -1 auto`
+    - [x] `>= 30 && <= 40 / -1 home`
+    - [x] `>= 30 && <= 40 / -1 disability`
+    - [x] `>= 30 && <= 40 / -1 life`
+  - [x] Map scores to human readable output
+  - [x] Create engine for configurable chain of policies computation
+
+  - [ ] IncomeNonExistencePolicy
+    - [ ] `INELIGIBLE disability`
+  - [ ] VehicleNonExistencePolicy
+    - [ ] `INELIGIBLE auto`
+  - [ ] HouseNonExistencePolicy
+    - [ ] `INELIGIBLE home`
+  - [ ] IncomeAmountPolicy
+    - [ ] `> 200_000 / -1 auto`
+    - [ ] `> 200_000 / -1 home`
+    - [ ] `> 200_000 / -1 disability`
+    - [ ] `> 200_000 / -1 life`
+  - [ ] HouseOwnershipPolicy
+    - [ ] `mortgaged / +1 home`
+    - [ ] `mortgaged / +1 disability`
+  - [ ] DependentsExistencePolicy
+    - [ ] `+1 disability`
+    - [ ] `+1 life`
+  - [ ] MariageStatusPolicy
+    - [ ] `married / +1 life`
+    - [ ] `married / -1 disability`
+  - [ ] VehicleAgePolicy
+    - [ ] `(now - year) < 5 / +1 auto`
 
 - [ ] API test
 - [ ] Readme

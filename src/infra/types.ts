@@ -1,3 +1,4 @@
 export interface Logger {
-  log: (message: string) => void;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  log: (message: string | Object) => void;
 }
