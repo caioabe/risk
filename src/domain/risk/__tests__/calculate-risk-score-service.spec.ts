@@ -5,7 +5,7 @@
 // internal impure services like monitoring services for example.
 
 // For the sake of simplicity, I decided to
-// skip this one, since the api test will cover
+// skip this one, since the application test will cover
 // the "Does it work?" test
 
 // Ps.: Not sure if expensive tests like smoke or E2E are required
