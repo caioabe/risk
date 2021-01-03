@@ -13,18 +13,20 @@ describe('vehicle non existence policy', () => {
     });
   });
 
-  describe('when vehicle does not exist', () => {
-    it('revokes eligibility', () => {
-      const result = vehicleNonExistencePolicy.compute(
-        issuedApplicationStubFactory({ vehicleYear: null }),
-        stateStubFactory('auto' as const),
-      );
+  describe('when insurance is auto', () => {
+    describe('when vehicle does not exist', () => {
+      it('revokes eligibility', () => {
+        const result = vehicleNonExistencePolicy.compute(
+          issuedApplicationStubFactory({ vehicleYear: null }),
+          stateStubFactory('auto' as const),
+        );
 
-      expect(result).toEqual({
-        auto: {
-          isEligible: false,
-          score: 0,
-        },
+        expect(result).toEqual({
+          auto: {
+            isEligible: false,
+            score: 0,
+          },
+        });
       });
     });
   });

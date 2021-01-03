@@ -6,6 +6,7 @@ import { vehicleNonExistencePolicy } from './vehicle-non-existence-policy';
 import { houseOwnershipPolicy } from './house-ownership-policy';
 import { dependentsExistencePolicy } from './dependents-existence-policy';
 import { maritalStatusPolicy } from './marital-status-policy';
+import { vehicleYearPolicy } from './vehicle-year-policy';
 
 export const activePolicies = [
   agePolicy,
@@ -16,4 +17,5 @@ export const activePolicies = [
   houseOwnershipPolicy,
   dependentsExistencePolicy,
   maritalStatusPolicy,
+  vehicleYearPolicy,
 ];
