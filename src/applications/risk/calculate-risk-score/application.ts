@@ -38,7 +38,7 @@ const calculateRiskScoreApplication: CalculateRiskScoreApplication = ({
     };
 
     // I'd not log those, but I'll use them to explain the flow
-    // more easily
+    // more easily for this non-production version
     console.log(
       '######################## BEGIN OF SCRIPT ########################\n\n',
     );
@@ -63,7 +63,7 @@ const calculateRiskScoreApplication: CalculateRiskScoreApplication = ({
 
     return result;
   } catch (error) {
-    const message = `Calculate Risk Score Application: Unexpected error when trying to calculate risk score${error.message}`;
+    const message = `Calculate Risk Score Application Error: ${error.message}`;
 
     logger.log(message);
 
