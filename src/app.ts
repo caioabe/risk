@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import express, { Application } from 'express';
 import { routes } from './routes';
 
@@ -8,6 +10,5 @@ export const app: Application = express();
 routes(app);
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
   console.info(`Server started at http://localhost:${port}`);
 });
